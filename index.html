@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman!</title>
+    <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+<body class="d-flex flex-column h-100">
+    <header class="jumbotron container mt-4 flex-shrink-0">
+        <h1 class="display-4">Let's Play Hangman! (Finish Letters Array!)</h1>
+    </header>
+
+    <main class="card flex-shrink-0 container mb-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="input-row" class="card-body row justify-content-center">
+                    <p>Word:</p>
+                    
+                </div>
+                <div id="input-display" class="card-body row justify-content-center">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="chances-row" class="card-body row justify-content-center">
+                            Chances:
+                        </div>
+                        <div id="chance-display" class="card-body row justify-content-center">&nbsp;</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="wrong-row" class="card-body row justify-content-center">
+                            Wrong Letters:
+                        </div>
+                        <div id="wrong-display" class="card-body row justify-content-center">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body row justify-content-center">
+                    <button id="start-button" class="btn btn-success">
+                        Start Game!
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4 instructions card-body">
+                <h1>Rules:</h1>
+                <ul>
+                    <li>1. Press "Start Game" to begin a new game.</li>
+                    <li>2. Guess the secret word by typing letters on the keyboard.</li>
+                    <li>3. If you guess the word before running out of chances, you win!</li>
+                    <li>4. If you run out of chances before guessing the word, you lose.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+        
+    
+    <footer class="mt-auto footer p-3 d-flex justify-content-center">
+        <span>This is a footer.</span>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
