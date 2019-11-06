@@ -5,3 +5,19 @@ html {
 footer {
     background-color: lightgray;
 }
+
+#input-display {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+#hint-display {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.lead {
+    font-size: 1.5rem;
+}

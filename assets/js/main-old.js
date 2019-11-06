@@ -1,58 +1,23 @@
 // Declaring variables
 
 // Declaring game variables
-// var wordsArr = ["alienation", "historical", "dialectics", "materialism", "proletariat", "bourgeoisie", "hegemony", "subaltern"];
-
-var wordsArr = [
-    {
-        name: "alienation",
-        hint: "Marx used this word to describe the sense of estrangement from one's labor felt by the proletariat in the capitalist mode of production."
-    },
-    {
-        name: "dialectics",
-        hint: "While never used by Hegel himself, this word, commonly associated with Hegelianism, describes the process of thesis-antithesis-synthesis undergone by political and societal structures, and is central to Marxist historiography."
-    },
-    {
-        name: "materialism",
-        hint: "The philosophical principle that matter is the primary substance of the universe, and that ideas and consciousness are the by-products of chemical and material processes."
-    },
-    {
-        name: "proletariat",
-        hint: "In Marxian economics, this class is obliged by necessity to sell their labor to the capitalist class in order to survive."
-    },
-    {
-        name: "bourgeoisie",
-        hint: "According to Marx, this class is at the reigns of the means of production, and \"creates\" wealth for themselves by paying laborers less than the value of their labor."
-    },
-    {
-        name: "hegemony",
-        hint: "In Gramscian thought, a ruling class establishes this through cultural production, making its \"common sense\" and class logic seem self-evident."
-    },
-    {
-        name: "subaltern",
-        hint: "Gramsci employs this word to describe the position of the marginalized classes of society."
-    }
-]
+var wordsArr = ["alienation", "historical", "dialectics", "materialism", "proletariat", "bourgeoisie", "hegemony", "subaltern"];
 var lettersArr = [];
-var chosenWord;
-var chosenName = "";
+var chosenWord = "";
 var chosenLetter = "";
 var wrongLetters;
 var isPlaying = false;
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+// Declaring #chances-display variables
+var chances;
+var chanceDisplay = document.getElementById("chance-display");
 
 // Declaring #input-display variables
 var inputDisplay = document.getElementById("input-display");
 var underscore = "_";
 var space = " ";
 var underSpace = underscore + space;
-
-// Declaring #hint-display variables
-var hintDisplay = document.getElementById("hint-display");
-
-// Declaring #chances-display variables
-var chances;
-var chanceDisplay = document.getElementById("chance-display");
 
 // Declaring #wrong-display variables
 var wrongDisplay = document.getElementById("wrong-display");
@@ -68,14 +33,11 @@ startButton.onclick = function() {
     wrongDisplay.innerHTML = "&nbsp;";
     startButton.innerHTML = "Type a letter!";
     chosenWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
-    chosenName = chosenWord.name;
-    chosenHint = chosenWord.hint;
-    chances = Math.floor(chosenName.length * .75);
-    underSpaces = underSpace.repeat(chosenName.length);
+    chances = Math.floor(chosenWord.length * .75);
+    underSpaces = underSpace.repeat(chosenWord.length);
     inputDisplay.innerHTML = underSpaces;
-    hintDisplay.innerHTML = chosenHint;
     chanceDisplay.innerHTML = chances;
-    console.log("chosenName", chosenName);
+    console.log("chosenWord", chosenWord);
 
     // Step 1: Input letters.
     document.onkeyup = function(event) {
@@ -84,14 +46,14 @@ startButton.onclick = function() {
             &&
             alphabet.includes(event.key)
         ) {
-            lettersArr = chosenName.split("");
+            lettersArr = chosenWord.split("");
             chosenLetter = event.key;
             console.log("chosenLetter", chosenLetter);
     
             var correct = false;
     
             
-            // Step 2.1: Iterate over an array of chosenName's letters to see if input character is in chosenName.
+            // Step 2.1: Iterate over an array of chosenWord's letters to see if input character is in chosenWord.
             for (var i = 0; i < lettersArr.length; i++) {
                 if (chosenLetter === lettersArr[i]) {
                     var underSpacesArr = underSpaces.split("");
