@@ -7,6 +7,7 @@ var chosenWord = "";
 var chosenLetter = "";
 var wrongLetters;
 var isPlaying = false;
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 // Declaring #chances-display variables
 var chances;
@@ -29,9 +30,10 @@ startButton.onclick = function() {
     isPlaying = true;
     startButton.disabled = true;
     wrongLetters = [];
+    wrongDisplay.innerHTML = "&nbsp;";
     startButton.innerHTML = "Type a letter!";
     chosenWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
-    chances = Math.floor(chosenWord.length * 1.25);
+    chances = Math.floor(chosenWord.length * .75);
     underSpaces = underSpace.repeat(chosenWord.length);
     inputDisplay.innerHTML = underSpaces;
     chanceDisplay.innerHTML = chances;
@@ -39,7 +41,11 @@ startButton.onclick = function() {
 
     // Step 1: Input letters.
     document.onkeyup = function(event) {
-        if (isPlaying === true) {
+        if (
+            isPlaying
+            &&
+            alphabet.includes(event.key)
+        ) {
             lettersArr = chosenWord.split("");
             chosenLetter = event.key;
             console.log("chosenLetter", chosenLetter);
@@ -60,22 +66,18 @@ startButton.onclick = function() {
             }
     
             console.log("correct?", correct)
-    
-            // Step 3.1: If not, chances should go down by one.
-            if (isPlaying && !correct) {
-                chances--;
-                chanceDisplay.innerHTML = chances;
-            }
 
-            // Step 3.2: If letter is not in word, push the letter into an array of wrongLetters and if letter is not already is array, add letter to wrongDisplay box on page.
+            // Step 3.2: If letter is not in word, push the letter into an array of wrongLetters; if letter is not already is array,add letter to wrongDisplay box on page and lower chances by one.
             if (
-                (!correct)
+                !correct
                 &&
-                (wrongLetters.indexOf(chosenLetter) === -1)
+                wrongLetters.indexOf(chosenLetter) === -1
                 ) {
                 wrongLetters.push(chosenLetter);
-                wrongDisplay.innerHTML += chosenLetter.toUpperCase();
+                wrongDisplay.innerHTML += chosenLetter.toUpperCase() + " ";
                 console.log("wrongLetters", wrongLetters);
+                chances--;
+                chanceDisplay.innerHTML = chances;
             } else {
                 console.log("wrongLetters", wrongLetters);
             }
