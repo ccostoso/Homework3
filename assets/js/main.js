@@ -14,7 +14,7 @@ var wordsArr = [
     },
     {
         name: "materialism",
-        hint: "The philosophical principle that matter is the primary substance of the universe, and that ideas and consciousness are the by-products of chemical and material processes."
+        hint: "The philosophical principle that matter is the primary substance of the universe, and that ideas and consciousness are the by-products of chemical, rathern than spiritual, processes."
     },
     {
         name: "proletariat",
@@ -22,7 +22,7 @@ var wordsArr = [
     },
     {
         name: "bourgeoisie",
-        hint: "According to Marx, this class is at the reigns of the means of production, and \"creates\" wealth for themselves by paying laborers less than the value of their labor."
+        hint: "According to Marx, this class holds the reins of the means of production, and \"creates\" wealth for themselves by paying laborers less than the value of their labor."
     },
     {
         name: "hegemony",
@@ -73,6 +73,7 @@ startButton.onclick = function() {
     chances = Math.floor(chosenName.length * .75);
     underSpaces = underSpace.repeat(chosenName.length);
     inputDisplay.innerHTML = underSpaces;
+    inputDisplay.style.color = "#24292d";
     hintDisplay.innerHTML = chosenHint;
     chanceDisplay.innerHTML = chances;
     console.log("chosenName", chosenName);
@@ -126,6 +127,7 @@ startButton.onclick = function() {
             // Step 5.1 If player has guessed the word, they win!
             if (underSpaces.indexOf(underSpace) < 0) {
                 isPlaying = false;
+                inputDisplay.style.color = "green";
                 startButton.disabled = false;
                 startButton.innerHTML = "You win! Try again?";
             }
@@ -133,6 +135,8 @@ startButton.onclick = function() {
             // Step 5.2 If player has no more chances, they lose.
             if (chances === 0) {
                 isPlaying = false;
+                inputDisplay.innerHTML = lettersArr.join(" ").toUpperCase();
+                inputDisplay.style.color = "red";
                 startButton.disabled = false;
                 startButton.innerHTML = "You lose! Try again?";
             }
